@@ -1,2 +1,15 @@
-# sustainable-cloud
-Performance Comparison of Web API developed using languages like C#, Java, Go, Node(Js) and Rust
+`
+kubectl -n kubernetes-dashboard create token admin-user
+
+Observability has been enabled (user/pass: admin/prom-operator)
+
+GO Fiber Performance stats
+
+
+.Net 6 Performance stats
+
+Salvo
+
+
+Warp
+
