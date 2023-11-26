@@ -1,15 +1,6 @@
 `
 kubectl -n kubernetes-dashboard create token admin-user
 
-Observability has been enabled (user/pass: admin/prom-operator)
+.net core
 
-GO Fiber Performance stats
-
-
-.Net 6 Performance stats
-
-Salvo
-
-
-Warp
-
+wrk -t12 -c400 -d30s http://microk8s.local/net/weather

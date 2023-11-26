@@ -16,14 +16,17 @@ spec:
     spec:
       containers:
       - name: gofiber-api
-        image: taugem/gofiberapi:v0.1      
+        image: taugem/gofiberapi:v0.1
+        ports:
+        - containerPort: 5041
         resources:
           requests:
-            memory: "8M"
+            memory: "32M"
             cpu: "250m"
           limits:
-            memory: "16M"
-            cpu: "500m" 
+            memory: "64M"
+            cpu: "500m"          
+
 ---
 
 apiVersion: v1
@@ -33,10 +36,28 @@ metadata:
   labels:
     app: gofiber-api
 spec:
-  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 5041
   selector:
     app: gofiber-api
-  ports:
-  - name: http
-    protocol: TCP
-    port: 5041
+  type: ClusterIP
+status:
+    loadBalancer: {}
+
+# ---
+
+# apiVersion: autoscaling/v1
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   name: gofiber-api-hpa
+# spec:
+#   maxReplicas: 4  
+#   minReplicas: 1   
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: gofiber-api-deployment
+#   targetCPUUtilizationPercentage: 80
