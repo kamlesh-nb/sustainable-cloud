@@ -1,6 +1,2 @@
-`
-kubectl -n kubernetes-dashboard create token admin-user
+**Performace Comparison of Languages like C#, Java, JS, Go & Rust**
 
-.net core
-
-wrk -t12 -c400 -d30s http://microk8s.local/net/weather
